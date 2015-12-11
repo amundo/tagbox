@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+<style>
+body {
+  display:flex;
+  height:100vh;
+  flex-direction:column;
+}
+ul, textarea {
+  flex-grow: 1;
+}
+
+</style>
+</head>
+<body>
+  
+<textarea id=text></textarea>
+
+<ul id=tags>
+</ul>
+
+
+<script>
+var ta = document.querySelector('textarea'),
+    ul = document.querySelector('ul');
+
+var extractTags = text => {
+  var tokens = text.split(/[ \.\?\!]+/g);
+  var tags = tokens.filter(w => w.startsWith('#'));
+  return tags.map(t => t.slice(1, t.length));
+}
+
+var parseTags = ev => {
+  var el = ev.target,
+      text = el.value,
+      tags = extractTags(text);
+
+  viewTags(tags);
+}
+
+var viewTags = tags => { 
+  ul.innerHTML = '';
+  tags.forEach(tag => ul.insertAdjacentHTML('beforeend', `<li>${tag}</li>`));
+}
+
+
+ta.addEventListener('keyup', parseTags);
+</script>
+</body>
+</html>
