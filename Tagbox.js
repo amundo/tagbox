@@ -32,6 +32,7 @@ var Tagbox = (function () {
     tags: {
       set: function (tags) {
         this.el.dataset.tags = JSON.stringify(tags);
+        this.render();
         return JSON.stringify(tags);
       },
       get: function () {
@@ -45,6 +46,16 @@ var Tagbox = (function () {
         this.el.addEventListener("keyup", function (ev) {
           return _this.parseTags(ev);
         });
+      }
+    },
+    render: {
+      value: function render() {
+        var ul = document.createElement("ul");
+        ul.innerHTML = this.tags.map(function (t) {
+          return "<li class=tag>" + t + "</li>";
+        }).join("");
+        this.el.nextElementSibling.remove();
+        this.el.insertAdjacentHTML("afterend", ul.outerHTML);
       }
     }
   });

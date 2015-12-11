@@ -18,6 +18,7 @@ class Tagbox {
  
   set tags(tags){
     this.el.dataset.tags = JSON.stringify(tags);
+    this.render();
     return JSON.stringify(tags);
   }
 
@@ -27,5 +28,12 @@ class Tagbox {
 
   listen(){
     this.el.addEventListener('keyup', ev => this.parseTags(ev));
+  }
+
+  render(){
+    var ul = document.createElement('ul');
+    ul.innerHTML = this.tags.map(t => `<li class=tag>${t}</li>`).join('');
+    this.el.nextElementSibling.remove();
+    this.el.insertAdjacentHTML('afterend', ul.outerHTML);
   }
 }
