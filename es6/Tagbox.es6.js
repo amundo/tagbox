@@ -31,9 +31,7 @@ class Tagbox {
   }
 
   render(){
-    var ul = document.createElement('ul');
-    ul.innerHTML = this.tags.map(t => `<li class=tag>${t}</li>`).join('');
-    this.el.nextElementSibling.remove();
+    ul.innerHTML = `<ul class=tags>${this.tags.map(t => `<li class=tag>${t}</li>`).join('')}</ul>`;
     this.el.insertAdjacentHTML('afterend', ul.outerHTML);
   }
 }

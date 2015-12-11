@@ -50,11 +50,9 @@ var Tagbox = (function () {
     },
     render: {
       value: function render() {
-        var ul = document.createElement("ul");
-        ul.innerHTML = this.tags.map(function (t) {
+        ul.innerHTML = "<ul class=tags>" + this.tags.map(function (t) {
           return "<li class=tag>" + t + "</li>";
-        }).join("");
-        this.el.nextElementSibling.remove();
+        }).join("") + "</ul>";
         this.el.insertAdjacentHTML("afterend", ul.outerHTML);
       }
     }
