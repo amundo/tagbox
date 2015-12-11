@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+<style>
+body {
+  display:flex;
+  height:20vh;
+  flex-direction:column;
+}
+ul, textarea {
+  flex-grow: 1;
+}
+
+</style>
+</head>
+<body>
+  
+<textarea id=text data-tags></textarea>
+<input data-tags>
+
+<script src=Tagbox.js></script>
+<script>
+
+var ta = document.querySelector('textarea'),
+    tb = new Tagbox(ta),
+    i = document.querySelector('input'),
+    tbi = new Tagbox(i);
+
+
+</script>
+</body>
+</html>
